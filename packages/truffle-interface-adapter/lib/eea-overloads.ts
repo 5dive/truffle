@@ -1,7 +1,7 @@
 import BN from "bn.js";
 import { Web3Shim } from "./web3-shim";
 
-export const PantheonDefinition = {
+export const EEADefinition = {
   async initNetworkType (web3: Web3Shim) {
     overrides.getBlock(web3);
     overrides.getTransaction(web3);
@@ -13,6 +13,7 @@ const overrides = {
 // The ts-ignores are ignoring the checks that are
 // saying that web3.eth.getBlock is a function and doesn't
 // have a `method` property, which it does
+// EEA blocks have the same specs as ehtereum's, so no changes here
   "getBlock": (web3: Web3Shim) => {
   // @ts-ignore
   const _oldBlockFormatter = web3.eth.getBlock.method.outputFormatter;
@@ -38,6 +39,8 @@ const overrides = {
   },
 
   "getTransaction": (web3: Web3Shim) => {
+  // TODO: transactions in EEA spec should be categorized in private/public TXs
+  // and be treated accordingly
   const _oldTransactionFormatter =
     // @ts-ignore
     web3.eth.getTransaction.method.outputFormatter;

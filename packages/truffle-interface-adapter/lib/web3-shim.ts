@@ -2,7 +2,7 @@ import Web3 from "web3";
 import { Provider } from "web3/providers";
 
 import { EthereumDefinition } from "./ethereum-overloads";
-import { PantheonDefinition } from "./pantheon-overloads";
+import { EEADefinition } from "./EEA-overloads";
 import { QuorumDefinition } from "./quorum-overloads";
 import { FabricEvmDefinition } from "./fabric-evm-overloads";
 
@@ -10,7 +10,7 @@ const initInterface = async(web3Shim: Web3Shim) => {
 
     const networkTypes: NetworkTypesConfig = new Map(Object.entries({
       "ethereum": EthereumDefinition,
-      "pantheon": PantheonDefinition,
+      "EEA": EEADefinition,
       "quorum": QuorumDefinition,
       "fabric-evm": FabricEvmDefinition
     }));
